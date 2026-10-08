@@ -1,0 +1,18 @@
+{
+  "appId": "com.ruqyah.saadalghamdi",
+  "appName": "الرقية الشرعية - سعد الغامدي",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2500,
+      "launchAutoHide": true,
+      "backgroundColor": "#0f766e",
+      "androidSplashResourceName": "splash",
+      "showSpinner": false
+    }
+  }
+}
