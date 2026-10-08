@@ -40,6 +40,18 @@ jobs:
           distribution: temurin
           java-version: '21'
 
+      - name: Ensure Capacitor is installed
+        run: |
+          if [ ! -f node_modules/.bin/cap ]; then
+            npm install @capacitor/cli@latest @capacitor/core@latest @capacitor/android@latest --legacy-peer-deps
+          fi
+          CAP_VER=$(node -p "require('@capacitor/cli/package.json').version")
+          [ -d node_modules/@capacitor/core ] || npm install @capacitor/core@$CAP_VER --legacy-peer-deps
+          [ -d node_modules/@capacitor/android ] || npm install @capacitor/android@$CAP_VER --legacy-peer-deps
+          if ! ls capacitor.config.* >/dev/null 2>&1; then
+            npx cap init HadithReels com.hadithreels.app --web-dir=dist
+          fi
+
       - name: Add Android platform if missing
         run: |
           if [ ! -d "android" ]; then
